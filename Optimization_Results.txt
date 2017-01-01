@@ -1,0 +1,13 @@
+optimization finished, #iter = 1790
+nu = 0.031773
+obj = -718.037196, rho = 0.810202
+nSV = 658, nBSV = 36
+Total nSV = 658
+
+Accuracy = 99.9814% (5374/5375) (classification)
+Cross Validation Accuracy: 99.981395
+Cross Validation Precision: 1.000000 , Recall: 0.999562, FScore: 0.9998
+
+Accuracy = 99.442% (2673/2688) (classification)
+Test Accuracy: 99.441964
+Test Set Precision: 0.997382 , Recall: 0.992188, FScore: 0.9948
