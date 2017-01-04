@@ -1,3 +1,10 @@
+% The evaluation functions computed by this function are are:
+% Precision = true_positive / (true_positive + false_positive)
+% Recall = true_positive / (true_positive + false_negative)
+% F-score = 2 * Precision * Recall / (Precision + Recall)
+% Inputs: y -- Actual Output and yPredicted - Predicted Output
+% Both inputs are assumed to be either 0 (negative) or 1 (Positive)
+
 % Copyright (c) 2016, Rakesh Kumbhashi
 % All rights reserved.
 % 
@@ -23,26 +30,22 @@
 % ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 % POSSIBILITY OF SUCH DAMAGE.
 
-% The evaluation functions computed by this function are are:
-% precision
-% Precision = true_positive / (true_positive + false_positive)
-% recall
-% Recall = true_positive / (true_positive + false_negative)
-% fscore
-% F-score = 2 * Precision * Recall / (Precision + Recall)
-
 function [precision, recall, fScore] =  ComputePredictionMetrics(y, yPredicted)
 
-y_pos = find(y==1);
+if(length(y) ~= length(yPredicted))
+   msgID = 'ComputePredictionMetrics:unequalVectorsizes';
+   msg = 'Label Output and Predicted Output are not equal in size';
+   baseException = MException(msgID,msg);
+   throw(baseException);
+end
 
-true_pos = sum(yPredicted(y_pos) == 1);
-totalPredictPos  = sum(yPredicted==1);
+true_pos = sum( (yPredicted==1) & (y == 1));
+false_pos = sum( (yPredicted == 1) & (y==0));
 
-yPredictZero = find(yPredicted == 0);
-false_neg = sum(y(yPredictZero)==1);
+false_neg = sum(yPredicted == 0 & y==1);
 
-precision = true_pos / totalPredictPos;
+precision = true_pos / ( true_pos + false_pos);
 recall = true_pos / (true_pos + false_neg);
 
-fScore = 2 * precision * recall / (precision + recall);
+fScore = 2 *  ((precision * recall) / (precision + recall));
 end
