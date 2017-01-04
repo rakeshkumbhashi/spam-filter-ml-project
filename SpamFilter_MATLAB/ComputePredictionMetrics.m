@@ -5,7 +5,7 @@
 % Inputs: y -- Actual Output and yPredicted - Predicted Output
 % Both inputs are assumed to be either 0 (negative) or 1 (Positive)
 
-% Copyright (c) 2016, Rakesh Kumbhashi
+% Copyright (c) 2017, Rakesh Kumbhashi
 % All rights reserved.
 % 
 % Redistribution and use in source and binary forms, with or without
